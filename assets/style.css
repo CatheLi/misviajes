@@ -1,0 +1,226 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+    width: 100%;
+    overflow-x: hidden;
+    display: grid;
+    grid-template-areas:
+        'header'
+        'nav'
+        'main'
+        'footer';
+    grid-template-rows: 80px 150px calc(100vh - 80px - 150px - 60px) 60px;
+
+}
+
+header,
+nav,
+main,
+footer {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/*logo,titulo y barra*/
+header {
+    background-color: #BFECFF;
+    grid-area: header;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding:5px;
+}
+
+.logo-titulo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20px;
+}
+
+.logo-titulo img {
+    width: 80px;
+}
+
+.logo-titulo h1 {
+    font-size: 24px;
+    margin: 0;
+    padding-left: 10px;
+    color: #9900ff;
+}
+
+.logo-animado {
+    display: none;
+}
+
+.bars {
+    font-size: 40px;
+    padding-right: 20px;
+    color: #9900FF;
+}
+
+/*ícono con las banderas de los paises*/
+nav {
+    background-color: #CDC1FF;
+    grid-area: nav;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px 10px;
+}
+
+.icono a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+}
+
+.icono img {
+    margin-bottom: 5px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.icono span {
+    display: block;
+    font-size: 14px;
+}
+
+/*Galeria de fotos*/
+main {
+    background-color: #FFF6E3;
+    grid-area: main;
+}
+
+.galeria {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+}
+
+.galeria section h2 {
+    font-size: 24px;
+    margin: 10px 0px;
+    color: #9900FF;
+    text-align: center;
+}
+
+.galeria .imagenes img{
+    width: 150px;
+    height: auto;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.galeria .imagenes img:hover {
+    transform: scale(1.5);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/*Footer*/
+footer {
+    background-color: #FFCCEA;
+    grid-area: footer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #9900FF;
+    font-size: 10px;
+    gap: 2px;
+    padding: 5px 0px;
+}
+
+.icons {
+    font-size: 16px;
+}
+
+@media (min-width:576px) {
+    body {
+        max-height: 100vh;
+        grid-template-columns: 15% auto;
+        grid-template-rows: 100px calc(100vh - 100px - 60px) 60px;
+        grid-template-areas:
+            'header header'
+            'nav main'
+            'footer footer';
+    }
+
+    .bars {
+        display: none;
+    }
+
+    .logo-titulo img {
+        display: none;
+    }
+
+    .logo-animado {
+        display: unset;
+        display: flex;
+        height: 50px;
+        width: 80px;
+        margin: auto;
+        margin-top: 10px;
+        justify-content: left;
+        align-items: center;
+    }
+
+    .logo-animado .animacion {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        animation: traer-imagen 2s infinite;
+    }
+
+    @keyframes traer-imagen {
+        0% {
+            background-image: url(/assets/imgs/logo-1.jpeg);
+        }
+
+        50% {
+            background-image: url(/assets/imgs/logo-2.jpeg);
+        }
+        100% {
+            background-image: url(/assets/imgs/logo-3.jpeg);
+        }
+    }
+
+    nav {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .galeria{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .galeria .imagenes {
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        grid-template-rows: 2,1fr;
+        gap:20px;
+    }
+
+}
